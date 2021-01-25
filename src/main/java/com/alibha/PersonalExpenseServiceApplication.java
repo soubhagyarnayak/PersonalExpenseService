@@ -1,5 +1,7 @@
 package com.alibha;
 
+import com.alibha.db.ExpenseItemRepository;
+import com.alibha.resources.ExpenseItemResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -23,7 +25,9 @@ public class PersonalExpenseServiceApplication extends Application<PersonalExpen
     @Override
     public void run(final PersonalExpenseServiceConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        ExpenseItemRepository expenseItemRepository = new ExpenseItemRepository();
+        ExpenseItemResource expenseItemResource = new ExpenseItemResource(expenseItemRepository);
+        environment.jersey().register(expenseItemResource);
     }
 
 }
