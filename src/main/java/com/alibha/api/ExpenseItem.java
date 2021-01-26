@@ -11,7 +11,7 @@ import java.util.List;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class ExpenseItem {
     private long id;
-    private DateTime timestamp;
+    private DateTime createtime;
     private String category;
     private String recipient;
     private String description;
