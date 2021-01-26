@@ -7,19 +7,17 @@ import java.util.List;
 import java.util.Optional;
 
 public class ExpenseItemRepository {
-    private List<ExpenseItem> expenseItems;
+    private ExpenseItemDao expenseItemDao;
 
-    public Optional<ExpenseItem> findById(long id) {
-        return expenseItems.stream()
-                .filter(expenseItem -> expenseItem.getId()==id)
-                .findFirst();
+    public ExpenseItem findById(long id) {
+        return expenseItemDao.findById(id);
     }
 
-    public void save(ExpenseItem expenseItem){
-        expenseItems.add(expenseItem);
+    public long save(ExpenseItem expenseItem){
+        return expenseItemDao.insert(expenseItem);
     }
 
-    public ExpenseItemRepository(){
-        this.expenseItems = new ArrayList<>();
+    public ExpenseItemRepository(ExpenseItemDao expenseItemDao){
+        this.expenseItemDao = expenseItemDao;
     }
 }

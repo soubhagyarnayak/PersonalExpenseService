@@ -16,5 +16,5 @@ public class ExpenseItem {
     private String recipient;
     private String description;
     private double amount;
-    private List<String> tags;
+    private String tags;
 }

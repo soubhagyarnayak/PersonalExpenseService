@@ -15,14 +15,15 @@ public class ExpenseItemResource {
     @Path("/{id}")
     public ExpenseItem getById(@PathParam("id") Long id){
         return expenseItemRepository
-                .findById(id)
-                .orElseThrow(RuntimeException::new);
+                .findById(id);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void save(ExpenseItem expenseItem){
-        expenseItemRepository.save(expenseItem);
+    public ExpenseItem save(ExpenseItem expenseItem){
+        long id = expenseItemRepository.save(expenseItem);
+        expenseItem.setId(id);
+        return expenseItem;
     }
 
     public ExpenseItemResource(ExpenseItemRepository expenseItemRepository){

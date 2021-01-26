@@ -2,3 +2,14 @@ logging:
   level: INFO
   loggers:
     com.alibha: DEBUG
+database:
+  driverClass: org.postgresql.Driver
+  user:
+  password:
+  url: 
+  properties:
+    charSet: UTF-8
+  maxWaitForConnection: 1s
+  maxSize: 1
+  minSize: 1
+  initialSize: 1
