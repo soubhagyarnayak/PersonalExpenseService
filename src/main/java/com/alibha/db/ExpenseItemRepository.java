@@ -17,6 +17,8 @@ public class ExpenseItemRepository {
         return expenseItemDao.insert(expenseItem);
     }
 
+    public List<ExpenseItem> getExpenseItemsForMonth(int year, int month){ return expenseItemDao.fetchExpenseItemsForMonth(year,month);}
+
     public ExpenseItemRepository(ExpenseItemDao expenseItemDao){
         this.expenseItemDao = expenseItemDao;
     }

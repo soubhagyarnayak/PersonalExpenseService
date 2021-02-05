@@ -5,6 +5,10 @@ import com.alibha.db.ExpenseItemRepository;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 @Path("/expenses")
 @Produces(MediaType.APPLICATION_JSON)
@@ -24,6 +28,13 @@ public class ExpenseItemResource {
         long id = expenseItemRepository.save(expenseItem);
         expenseItem.setId(id);
         return expenseItem;
+    }
+
+    @GET
+    @Path("/{year}/{month}")
+    public List<ExpenseItem> getExpenseItemsForMonth(
+            @PathParam("year") int year, @PathParam("month") int month){
+        return expenseItemRepository.getExpenseItemsForMonth(year, month);
     }
 
     public ExpenseItemResource(ExpenseItemRepository expenseItemRepository){
